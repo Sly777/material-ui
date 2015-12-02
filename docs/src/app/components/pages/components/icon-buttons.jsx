@@ -1,8 +1,11 @@
 import React from 'react';
-import { FontIcon, IconButton, NavigationMenu, Paper } from 'material-ui';
+import {
+  FontIcon,
+  IconButton,
+  Paper,
+} from 'material-ui';
 import ComponentDoc from '../../component-doc';
-import ActionGrade from 'svg-icons/action/grade';
-import ActionHome from 'svg-icons/action/home';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
 import Code from 'icon-buttons-code';
 import CodeExample from '../../code-example/code-example';
 import CodeBlock from '../../code-example/code-block';
@@ -12,11 +15,12 @@ export default class IconButtonsPage extends React.Component {
   render() {
 
     let desc = (
-      <p>
-        This component generates a button element and all props.
-        Also, focus styles will happen on tab but not on click.
-        There are three ways to add an icon:
-        <br/>
+      <div>
+        <p>
+          This component generates a button element and all props.
+          Also, focus styles will happen on tab but not on click.
+          There are three ways to add an icon:
+        </p>
         <ol>
           <li>
             For stylesheets: Set the prop "iconClassName" to the
@@ -41,7 +45,7 @@ export default class IconButtonsPage extends React.Component {
             iconClassName prop.
           </li>
         </ol>
-      </p>
+      </div>
     );
 
     let componentInfo = [
@@ -131,7 +135,7 @@ export default class IconButtonsPage extends React.Component {
         </Paper>
 
         <CodeExample code={Code}>
-          <IconButton iconClassName="muidocs-icon-custom-github" tooltip="bottom-right"  tooltipPosition = "bottom-right" />
+          <IconButton iconClassName="muidocs-icon-custom-github" tooltip="bottom-right" tooltipPosition = "bottom-right" />
 
           <IconButton iconClassName="muidocs-icon-custom-github" tooltip="bottom-center" tooltipPosition = "bottom-center" />
 

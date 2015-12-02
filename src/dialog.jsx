@@ -1,19 +1,18 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const WindowListenable = require('./mixins/window-listenable');
-const CssEvent = require('./utils/css-event');
-const KeyCode = require('./utils/key-code');
-const Transitions = require('./styles/transitions');
-const StylePropable = require('./mixins/style-propable');
-const FlatButton = require('./flat-button');
-const Overlay = require('./overlay');
-const RenderToLayer = require('./render-to-layer');
-const Paper = require('./paper');
-const DefaultRawTheme = require('./styles/raw-themes/light-raw-theme');
-const ThemeManager = require('./styles/theme-manager');
-const warning = require('warning');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import WindowListenable from './mixins/window-listenable';
+import KeyCode from './utils/key-code';
+import Transitions from './styles/transitions';
+import StylePropable from './mixins/style-propable';
+import FlatButton from './flat-button';
+import Overlay from './overlay';
+import RenderToLayer from './render-to-layer';
+import Paper from './paper';
+import DefaultRawTheme from './styles/raw-themes/light-raw-theme';
+import ThemeManager from './styles/theme-manager';
+import warning from 'warning';
 
-const ReactTransitionGroup = require('react-addons-transition-group');
+import ReactTransitionGroup from 'react-addons-transition-group';
 
 const TransitionItem = React.createClass({
   mixins: [StylePropable],
@@ -27,7 +26,7 @@ const TransitionItem = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -42,7 +41,7 @@ const TransitionItem = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -102,23 +101,27 @@ const DialogInline = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
   },
 
   propTypes: {
+    actionFocus: React.PropTypes.string,
     actions: React.PropTypes.array,
     autoDetectWindowHeight: React.PropTypes.bool,
     autoScrollBodyContent: React.PropTypes.bool,
     bodyStyle: React.PropTypes.object,
     contentClassName: React.PropTypes.string,
     contentStyle: React.PropTypes.object,
+    modal: React.PropTypes.bool,
+    onRequestClose: React.PropTypes.func,
     open: React.PropTypes.bool.isRequired,
     repositionOnUpdate: React.PropTypes.bool,
     style: React.PropTypes.object,
     title: React.PropTypes.node,
+    titleStyle: React.PropTypes.object,
   },
 
   windowListeners: {
@@ -184,12 +187,12 @@ const DialogInline = React.createClass({
 
     let gutter = spacing.desktopGutter + 'px ';
     let title = {
-        margin: 0,
-        padding: gutter + gutter + '0 ' + gutter,
-        color: this.state.muiTheme.rawTheme.palette.textColor,
-        fontSize: 24,
-        lineHeight: '32px',
-        fontWeight: '400',
+      margin: 0,
+      padding: gutter + gutter + '0 ' + gutter,
+      color: this.state.muiTheme.rawTheme.palette.textColor,
+      fontSize: 24,
+      lineHeight: '32px',
+      fontWeight: '400',
     };
 
 
@@ -225,7 +228,7 @@ const DialogInline = React.createClass({
 
     return (
       <div ref="container" style={this.prepareStyles(styles.main)}>
-        <ReactTransitionGroup component="div" ref="dialogWindow" 
+        <ReactTransitionGroup component="div" ref="dialogWindow"
           transitionAppear={true} transitionAppearTimeout={450}
           transitionEnter={true} transitionEnterTimeout={450}>
           {this.props.open &&
@@ -354,7 +357,7 @@ const DialogInline = React.createClass({
   },
 
   _requestClose(buttonClicked) {
-    
+
     if (!buttonClicked && this.props.modal) {
       return;
     }
@@ -387,7 +390,7 @@ const wrapperStyle = {position:'fixed', top:0, left:0, zIndex:20};
 const Dialog = React.createClass({
 
   propTypes: {
-    actionFocus: React.PropTypes.string, 
+    actionFocus: React.PropTypes.string,
     actions: React.PropTypes.array,
     autoDetectWindowHeight: React.PropTypes.bool,
     autoScrollBodyContent: React.PropTypes.bool,
@@ -429,12 +432,12 @@ const Dialog = React.createClass({
       open:null,
       defaultOpen:false,
       modal:false,
-    }
+    };
   },
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     const newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
 
@@ -523,4 +526,4 @@ const Dialog = React.createClass({
 
 });
 
-module.exports = Dialog;
+export default Dialog;

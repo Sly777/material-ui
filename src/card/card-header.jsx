@@ -1,9 +1,9 @@
-const React = require('react');
-const Styles = require('../styles');
-const Avatar = require('../avatar');
-const StylePropable = require('../mixins/style-propable');
-const ThemeManager = require('../styles/theme-manager');
-const DefaultRawTheme = require('../styles/raw-themes/light-raw-theme');
+import React from 'react';
+import Styles from '../styles';
+import Avatar from '../avatar';
+import StylePropable from '../mixins/style-propable';
+import ThemeManager from '../styles/theme-manager';
+import DefaultRawTheme from '../styles/raw-themes/light-raw-theme';
 
 
 const CardHeader = React.createClass({
@@ -19,21 +19,21 @@ const CardHeader = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
   },
 
   getInitialState() {
-    return { 
+    return {
       muiTheme: this.context.muiTheme ? this.context.muiTheme : ThemeManager.getMuiTheme(DefaultRawTheme),
     };
   },
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -117,4 +117,4 @@ const CardHeader = React.createClass({
   },
 });
 
-module.exports = CardHeader;
+export default CardHeader;

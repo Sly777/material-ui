@@ -1,12 +1,12 @@
-const React = require('react');
-const StylePropable = require('../mixins/style-propable');
-const WindowListenable = require('../mixins/window-listenable');
-const KeyCode = require('../utils/key-code');
-const Clock = require('./clock');
-const Dialog = require('../dialog');
-const FlatButton = require('../flat-button');
-const DefaultRawTheme = require('../styles/raw-themes/light-raw-theme');
-const ThemeManager = require('../styles/theme-manager');
+import React from 'react';
+import StylePropable from '../mixins/style-propable';
+import WindowListenable from '../mixins/window-listenable';
+import KeyCode from '../utils/key-code';
+import Clock from './clock';
+import Dialog from '../dialog';
+import FlatButton from '../flat-button';
+import DefaultRawTheme from '../styles/raw-themes/light-raw-theme';
+import ThemeManager from '../styles/theme-manager';
 
 const TimePickerDialog = React.createClass({
 
@@ -29,13 +29,13 @@ const TimePickerDialog = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       open: false,
       muiTheme: this.context.muiTheme ? this.context.muiTheme : ThemeManager.getMuiTheme(DefaultRawTheme),
@@ -44,7 +44,7 @@ const TimePickerDialog = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -155,4 +155,4 @@ const TimePickerDialog = React.createClass({
 
 });
 
-module.exports = TimePickerDialog;
+export default TimePickerDialog;

@@ -1,7 +1,8 @@
 import React from 'react';
-import { AppBar, DropDownMenu, Paper } from 'material-ui';
+import AppBar from 'material-ui/app-bar';
+import Paper from 'material-ui/paper';
 import IconButton from 'icon-button';
-import NavigationClose from 'svg-icons/navigation/close';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'flat-button';
 import ComponentDoc from '../../component-doc';
 import CodeExample from '../../code-example/code-example';
@@ -9,7 +10,7 @@ import CodeBlock from '../../code-example/code-block';
 import Code from 'app-bar-code';
 import IconMenu from 'menus/icon-menu';
 import MenuItem from 'menus/menu-item';
-import MoreVertIcon from 'svg-icons/navigation/more-vert';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 const styles = {
   title: {
@@ -78,6 +79,12 @@ export default class AppBarPage extends React.Component {
             header: 'default: true',
             desc: 'Determines whether or not to display the Menu icon next to ' +
                   'the title. Setting this prop to false will hide the icon.',
+          },
+          {
+            name: 'titleStyle',
+            type: 'object',
+            header: 'optional',
+            desc: 'Override the inline-styles of the app bar\'s title element.',
           },
           {
             name: 'title',
@@ -153,9 +160,13 @@ import AppBar from 'material-ui/lib/app-bar';
             title="Title"
             iconElementLeft={<IconButton><NavigationClose /></IconButton>}
             iconElementRight={
-              <IconMenu iconButtonElement={
-                <IconButton><MoreVertIcon /></IconButton>
-              }>
+              <IconMenu
+                iconButtonElement={
+                  <IconButton><MoreVertIcon /></IconButton>
+                }
+                targetOrigin={{horizontal:'right', vertical:'top'}}
+                anchorOrigin={{horizontal:'right', vertical:'top'}}
+              >
                 <MenuItem primaryText="Refresh" />
                 <MenuItem primaryText="Help" />
                 <MenuItem primaryText="Sign out" />

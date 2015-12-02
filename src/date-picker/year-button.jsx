@@ -1,8 +1,8 @@
-const React = require('react');
-const StylePropable = require('../mixins/style-propable');
-const EnhancedButton = require('../enhanced-button');
-const DefaultRawTheme = require('../styles/raw-themes/light-raw-theme');
-const ThemeManager = require('../styles/theme-manager');
+import React from 'react';
+import StylePropable from '../mixins/style-propable';
+import EnhancedButton from '../enhanced-button';
+import DefaultRawTheme from '../styles/raw-themes/light-raw-theme';
+import ThemeManager from '../styles/theme-manager';
 
 const YearButton = React.createClass({
 
@@ -23,7 +23,7 @@ const YearButton = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -44,7 +44,7 @@ const YearButton = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -135,4 +135,4 @@ const YearButton = React.createClass({
 
 });
 
-module.exports = YearButton;
+export default YearButton;

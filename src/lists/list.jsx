@@ -1,11 +1,11 @@
-const React = require('react');
-const PureRenderMixin = require('react-addons-pure-render-mixin');
-const PropTypes = require('../utils/prop-types');
-const StylePropable = require('../mixins/style-propable');
-const Typography = require('../styles/typography');
-const Paper = require('../paper');
-const DefaultRawTheme = require('../styles/raw-themes/light-raw-theme');
-const ThemeManager = require('../styles/theme-manager');
+import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import PropTypes from '../utils/prop-types';
+import StylePropable from '../mixins/style-propable';
+import Typography from '../styles/typography';
+import Paper from '../paper';
+import DefaultRawTheme from '../styles/raw-themes/light-raw-theme';
+import ThemeManager from '../styles/theme-manager';
 
 const List = React.createClass({
 
@@ -28,7 +28,7 @@ const List = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -40,7 +40,7 @@ const List = React.createClass({
     };
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       muiTheme: this.context.muiTheme ? this.context.muiTheme : ThemeManager.getMuiTheme(DefaultRawTheme),
     };
@@ -48,7 +48,7 @@ const List = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -98,4 +98,4 @@ const List = React.createClass({
   },
 });
 
-module.exports = List;
+export default List;

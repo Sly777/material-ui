@@ -1,9 +1,9 @@
-const React = require('react');
-const StylePropable = require('../mixins/style-propable');
-const Transitions = require('../styles/transitions');
-const SlideInTransitionGroup = require('../transition-groups/slide-in');
-const DefaultRawTheme = require('../styles/raw-themes/light-raw-theme');
-const ThemeManager = require('../styles/theme-manager');
+import React from 'react';
+import StylePropable from '../mixins/style-propable';
+import Transitions from '../styles/transitions';
+import SlideInTransitionGroup from '../transition-groups/slide-in';
+import DefaultRawTheme from '../styles/raw-themes/light-raw-theme';
+import ThemeManager from '../styles/theme-manager';
 
 const DateDisplay = React.createClass({
 
@@ -28,7 +28,7 @@ const DateDisplay = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -183,4 +183,4 @@ const DateDisplay = React.createClass({
 
 });
 
-module.exports = DateDisplay;
+export default DateDisplay;

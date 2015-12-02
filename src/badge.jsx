@@ -1,8 +1,8 @@
-const React = require('react');
-const Typography = require('./styles/typography');
-const DefaultRawTheme = require('./styles/raw-themes/light-raw-theme');
-const ThemeManager = require('./styles/theme-manager');
-const StylePropable = require('./mixins/style-propable');
+import React from 'react';
+import Typography from './styles/typography';
+import DefaultRawTheme from './styles/raw-themes/light-raw-theme';
+import ThemeManager from './styles/theme-manager';
+import StylePropable from './mixins/style-propable';
 
 // Badge
 export default React.createClass({
@@ -15,7 +15,7 @@ export default React.createClass({
   childContextTypes: {
     muiTheme: React.PropTypes.object,
   },
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -64,13 +64,13 @@ export default React.createClass({
         : theme.textColor;
 
     const radius = 12;
-    const radius2x = Math.floor(2*radius);
+    const radius2x = Math.floor(2 * radius);
 
     return {
       root: {
         position: 'relative',
         display: 'inline-block',
-        padding: [radius2x+'px', radius2x+'px', radius+'px', radius+'px'].join(' '),
+        padding: [radius2x + 'px', radius2x + 'px', radius + 'px', radius + 'px'].join(' '),
       },
       badge: {
         display: 'flex',

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Paper, Styles } from 'material-ui';
+import {Paper, Styles} from 'material-ui';
 import CodeBlock from '../../code-example/code-block';
 
-const { Spacing, Typography } = Styles;
+const {Typography} = Styles;
 const ThemeManager = Styles.ThemeManager;
 const DefaultRawTheme = Styles.LightRawTheme;
 
@@ -17,13 +17,13 @@ const Installation = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       muiTheme: this.context.muiTheme ? this.context.muiTheme : ThemeManager.getMuiTheme(DefaultRawTheme),
     };
@@ -31,7 +31,7 @@ const Installation = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -79,13 +79,7 @@ const Installation = React.createClass({
         '    );\n' +
         '  },\n' +
         '});\n\n' +
-        'module.exports = MyAwesomeReactComponent;\n',
-
-      customizationCode =
-        '@import "node_modules/material-ui/src/less/scaffolding.less";\n\n' +
-        '//Define a custom less file to override\n//any variables defined in scaffolding.less\n' +
-        '@import "my-custom-overrides.less";\n\n' +
-        '@import "node_modules/material-ui/src/less/components.less";',
+        'export default MyAwesomeReactComponent;\n',
 
       usageNotesCode =
         'import injectTapEventPlugin from "react-tap-event-plugin";\n\n' +
@@ -168,4 +162,4 @@ const Installation = React.createClass({
 
 });
 
-module.exports = Installation;
+export default Installation;

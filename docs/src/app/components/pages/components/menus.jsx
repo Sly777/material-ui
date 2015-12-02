@@ -1,18 +1,17 @@
 import React from 'react';
-import ReactTransitionGroup from 'react-addons-transition-group';
 import Paper from 'paper';
 import Menu from 'menus/menu';
 import MenuItem from 'menus/menu-item';
 import MenuDivider from 'menus/menu-divider';
 import ComponentDoc from '../../component-doc';
 
-import ArrowDropRight from 'svg-icons/navigation-arrow-drop-right';
-import ContentCopy from 'svg-icons/content/content-copy';
-import ContentLink from 'svg-icons/content/link';
-import Delete from 'svg-icons/action/delete';
-import Download from 'svg-icons/file/file-download';
-import PersonAdd from 'svg-icons/social/person-add';
-import RemoveRedEye from 'svg-icons/image/remove-red-eye';
+import ArrowDropRight from 'material-ui/svg-icons/navigation-arrow-drop-right';
+import ContentCopy from 'material-ui/svg-icons/content/content-copy';
+import ContentLink from 'material-ui/svg-icons/content/link';
+import Delete from 'material-ui/svg-icons/action/delete';
+import Download from 'material-ui/svg-icons/file/file-download';
+import PersonAdd from 'material-ui/svg-icons/social/person-add';
+import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
 import Code from 'menus-code';
 import CodeExample from '../../code-example/code-example';
 import CodeBlock from '../../code-example/code-block';
@@ -101,6 +100,27 @@ export default class MenusPage extends React.Component {
         ],
       },
       {
+        name: 'Menu Events',
+        infoArray: [
+          {
+            name: 'onEscKeyDown',
+            header: 'function(event)',
+            desc: 'Fired when an Esc key is keyed down.',
+          },
+          {
+            name: 'onItemTouchTap',
+            header: 'function(event, item)',
+            desc: 'Fired when a menu item is touchTapped.',
+          },
+          {
+            name: 'onChange',
+            header: 'function(event, value)',
+            desc: 'Fired when a menu item is touchTapped and the menu item value ' +
+              'is not equal to the current menu value.',
+          },
+        ],
+      },
+      {
         name: 'MenuItem Props',
         infoArray: [
           {
@@ -174,23 +194,12 @@ export default class MenusPage extends React.Component {
         ],
       },
       {
-        name: 'Events',
+        name: 'Menu Item Events',
         infoArray: [
           {
-            name: 'onEscKeyDown',
-            header: 'function(event)',
-            desc: 'Fired when an Esc key is keyed down.',
-          },
-          {
-            name: 'onItemTouchTap',
+            name: 'onTouchTap',
             header: 'function(event, item)',
             desc: 'Fired when a menu item is touchTapped.',
-          },
-          {
-            name: 'onChange',
-            header: 'function(event, value)',
-            desc: 'Fired when a menu item is touchTapped and the menu item value ' +
-              'is not equal to the current menu value.',
           },
         ],
       },
@@ -320,7 +329,17 @@ import MenuDivider from 'material-ui/lib/menus/menu-divider';
             <MenuItem primaryText="Single" insetChildren={true} />
             <MenuItem primaryText="1.15" insetChildren={true} />
             <MenuItem primaryText="Double" insetChildren={true} />
-            <MenuItem primaryText="Custom: 1.2" checked={true} rightIcon={<ArrowDropRight />} />
+            <MenuItem primaryText="Custom: 1.2" checked={true} rightIcon={<ArrowDropRight />} menuItems={[
+              <MenuItem primaryText="Show" rightIcon={<ArrowDropRight />} menuItems={[
+                <MenuItem primaryText="Show Level 2" />,
+                <MenuItem primaryText="Grid lines" checked={true} />,
+                <MenuItem primaryText="Page breaks" insetChildren={true} />,
+                <MenuItem primaryText="Rules" checked={true} />,
+              ]}/>,
+              <MenuItem primaryText="Grid lines" checked={true} />,
+              <MenuItem primaryText="Page breaks" insetChildren={true} />,
+              <MenuItem primaryText="Rules" checked={true} />,
+            ]} />
             <MenuDivider />
             <MenuItem primaryText="Add space before paragraph" />
             <MenuItem primaryText="Add space after paragraph" />

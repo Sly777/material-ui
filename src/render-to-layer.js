@@ -82,9 +82,9 @@ const RenderToLayer = React.createClass({
     // a noscript element, like React does when an element's render returns
     // null.
     if (layerElement === null) {
-        this.layerElement = ReactDOM.unstable_renderSubtreeIntoContainer (this, <noscript />, this._layer);
+      this.layerElement = ReactDOM.unstable_renderSubtreeIntoContainer(this, <noscript />, this._layer);
     } else {
-        this.layerElement = ReactDOM.unstable_renderSubtreeIntoContainer(this, layerElement, this._layer);
+      this.layerElement = ReactDOM.unstable_renderSubtreeIntoContainer(this, layerElement, this._layer);
     }
   },
 
@@ -93,7 +93,7 @@ const RenderToLayer = React.createClass({
       this.reactUnmount = debounce(() => {
         if (this._layer) {
           if (this.layerWillUnmount) {
-              this.layerWillUnmount(this._layer);
+            this.layerWillUnmount(this._layer);
           }
           ReactDOM.unmountComponentAtNode(this._layer);
           document.body.removeChild(this._layer);
@@ -104,22 +104,18 @@ const RenderToLayer = React.createClass({
   },
 
   _bindClickAway() {
-    if (typeof(this.canClickAway) === "undefined") {
+    if (typeof (this.canClickAway) === 'undefined') {
       this.canClickAway = true;
     }
     Events.on(window, 'focus', this._checkClickAway);
     Events.on(document, 'mousedown', this._checkClickAway);
     Events.on(document, 'touchend', this._checkClickAway);
-    Events.on(document, 'popOverOnShow', this._preventClickAway);
-    Events.on(document, 'popOverOnHide', this._allowClickAway);
   },
 
   _unbindClickAway() {
     Events.off(window, 'focus', this._checkClickAway);
     Events.off(document, 'mousedown', this._checkClickAway);
     Events.off(document, 'touchend', this._checkClickAway);
-    Events.off(document, 'popOverOnShow', this._preventClickAway);
-    Events.off(document, 'popOverOnHide', this._allowClickAway);
   },
 });
 

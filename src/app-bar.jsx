@@ -1,12 +1,12 @@
-const React = require('react');
-const StylePropable = require('./mixins/style-propable');
-const Typography = require('./styles/typography');
-const IconButton = require('./icon-button');
-const NavigationMenu = require('./svg-icons/navigation/menu');
-const DefaultRawTheme = require('./styles/raw-themes/light-raw-theme');
-const ThemeManager = require('./styles/theme-manager');
-const Paper = require('./paper');
-const PropTypes = require('./utils/prop-types');
+import React from 'react';
+import StylePropable from './mixins/style-propable';
+import Typography from './styles/typography';
+import IconButton from './icon-button';
+import NavigationMenu from './svg-icons/navigation/menu';
+import DefaultRawTheme from './styles/raw-themes/light-raw-theme';
+import ThemeManager from './styles/theme-manager';
+import Paper from './paper';
+import PropTypes from './utils/prop-types';
 
 const AppBar = React.createClass({
 
@@ -21,7 +21,7 @@ const AppBar = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -38,11 +38,12 @@ const AppBar = React.createClass({
     iconElementLeft: React.PropTypes.element,
     iconElementRight: React.PropTypes.element,
     iconStyleRight: React.PropTypes.object,
+    titleStyle: React.PropTypes.object,
     title: React.PropTypes.node,
     zDepth: PropTypes.zDepth,
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       muiTheme: this.context.muiTheme ? this.context.muiTheme : ThemeManager.getMuiTheme(DefaultRawTheme),
     };
@@ -50,7 +51,7 @@ const AppBar = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -91,7 +92,7 @@ const AppBar = React.createClass({
         position: 'relative',
         zIndex: 5,
         width: '100%',
-        display: '-webkit-box; display: -webkit-flex; display: flex',
+        display: 'flex',
         minHeight: themeVariables.height,
         backgroundColor: themeVariables.color,
         paddingLeft: spacing.desktopGutter,
@@ -137,6 +138,7 @@ const AppBar = React.createClass({
   render() {
     let {
       title,
+      titleStyle,
       iconStyleRight,
       showMenuIconButton,
       iconElementLeft,
@@ -163,8 +165,8 @@ const AppBar = React.createClass({
       // If the title is a string, wrap in an h1 tag.
       // If not, just use it as a node.
       titleElement = typeof title === 'string' || title instanceof String ?
-        <h1 onTouchTap={this._onTitleTouchTap} style={this.prepareStyles(styles.title, styles.mainElement)}>{title}</h1> :
-        <div onTouchTap={this._onTitleTouchTap} style={this.prepareStyles(styles.title, styles.mainElement)}>{title}</div>;
+        <h1 onTouchTap={this._onTitleTouchTap} style={this.prepareStyles(styles.title, styles.mainElement, titleStyle)}>{title}</h1> :
+        <div onTouchTap={this._onTitleTouchTap} style={this.prepareStyles(styles.title, styles.mainElement, titleStyle)}>{title}</div>;
     }
 
     if (showMenuIconButton) {
@@ -183,7 +185,7 @@ const AppBar = React.createClass({
           </div>
         );
       } else {
-        let child = (iconClassNameLeft) ? '' : <NavigationMenu style={this.mergeStyles(styles.iconButton.iconStyle)}/>;
+        let child = iconClassNameLeft ? '' : <NavigationMenu style={this.mergeStyles(styles.iconButton.iconStyle)}/>;
         menuElementLeft = (
           <IconButton
             style={this.mergeStyles(styles.iconButton.style)}
@@ -223,8 +225,7 @@ const AppBar = React.createClass({
           style={iconRightStyle}
           iconStyle={this.mergeStyles(styles.iconButton.iconStyle)}
           iconClassName={iconClassNameRight}
-          onTouchTap={this._onRightIconButtonTouchTap}>
-        </IconButton>
+          onTouchTap={this._onRightIconButtonTouchTap} />
       );
     }
 
@@ -263,4 +264,4 @@ const AppBar = React.createClass({
 
 });
 
-module.exports = AppBar;
+export default AppBar;

@@ -2,19 +2,19 @@ import React from 'react';
 import mui from 'material-ui';
 import ComponentDoc from '../../component-doc';
 import MobileTearSheet from '../../mobile-tear-sheet';
-import ActionAssignment from 'svg-icons/action/assignment';
-import ActionGrade from 'svg-icons/action/grade';
-import ActionInfo from 'svg-icons/action/info';
-import CommunicationCall from 'svg-icons/communication/call';
-import CommunicationChatBubble from 'svg-icons/communication/chat-bubble';
-import CommunicationEmail from 'svg-icons/communication/email';
-import ContentDrafts from 'svg-icons/content/drafts';
-import ContentInbox from 'svg-icons/content/inbox';
-import ContentSend from 'svg-icons/content/send';
-import EditorInsertChart from 'svg-icons/editor/insert-chart';
-import FileFolder from 'svg-icons/file/folder';
-import MoreVertIcon from 'svg-icons/navigation/more-vert';
-import { SelectableContainerEnhance } from 'material-ui/hoc/selectable-enhance';
+import ActionAssignment from 'material-ui/svg-icons/action/assignment';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+import CommunicationCall from 'material-ui/svg-icons/communication/call';
+import CommunicationChatBubble from 'material-ui/svg-icons/communication/chat-bubble';
+import CommunicationEmail from 'material-ui/svg-icons/communication/email';
+import ContentDrafts from 'material-ui/svg-icons/content/drafts';
+import ContentInbox from 'material-ui/svg-icons/content/inbox';
+import ContentSend from 'material-ui/svg-icons/content/send';
+import EditorInsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import FileFolder from 'material-ui/svg-icons/file/folder';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import {SelectableContainerEnhance} from 'material-ui/hoc/selectable-enhance';
 
 const {
   Avatar,
@@ -31,7 +31,7 @@ const {
 import IconMenu from 'menus/icon-menu';
 import MenuItem from 'menus/menu-item';
 
-const { Colors } = Styles;
+const {Colors} = Styles;
 import Code from 'lists-code';
 import CodeExample from '../../code-example/code-example';
 import CodeBlock from '../../code-example/code-block';
@@ -39,34 +39,34 @@ let SelectableList = SelectableContainerEnhance(List);
 
 const Typography = Styles.Typography;
 let styles = {
-     headline: {
-       fontSize: '24px',
-       lineHeight: '32px',
-       paddingTop: '16px',
-       marginBottom: '12px',
-       letterSpacing: '0',
-       fontWeight: Typography.fontWeightNormal,
-       color: Typography.textDarkBlack,
-     },
-     subheadline: {
-       fontSize: '18px',
-       lineHeight: '27px',
-       paddingTop: '12px',
-       marginBottom: '9px',
-       letterSpacing: '0',
-       fontWeight: Typography.fontWeightNormal,
-       color: Typography.textDarkBlack,
-     },
-     codeblock: {
-       padding: '24px',
-       marginBottom: '32px',
-     },
-}
+  headline: {
+    fontSize: '24px',
+    lineHeight: '32px',
+    paddingTop: '16px',
+    marginBottom: '12px',
+    letterSpacing: '0',
+    fontWeight: Typography.fontWeightNormal,
+    color: Typography.textDarkBlack,
+  },
+  subheadline: {
+    fontSize: '18px',
+    lineHeight: '27px',
+    paddingTop: '12px',
+    marginBottom: '9px',
+    letterSpacing: '0',
+    fontWeight: Typography.fontWeightNormal,
+    color: Typography.textDarkBlack,
+  },
+  codeblock: {
+    padding: '24px',
+    marginBottom: '32px',
+  },
+};
 
 function wrapState(ComposedComponent) {
   const StateWrapper = React.createClass({
     getInitialState() {
-      return { selectedIndex: 1 };
+      return {selectedIndex: 1};
     },
     handleUpdateSelectedIndex(e, index) {
       this.setState({
@@ -88,13 +88,13 @@ export default class ListsPage extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { selectedIndex: 1 }
+    this.state = {selectedIndex: 1};
 
     this.handleUpdateSelectedIndex = (e, index) => {
       this.setState({
         selectedIndex: index,
       });
-    }
+    };
   }
 
   render() {
@@ -845,5 +845,5 @@ handleUpdateSelectedIndex(e,index) {
       </ComponentDoc>
     );
 
-}
+  }
 }

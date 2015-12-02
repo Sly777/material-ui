@@ -1,10 +1,10 @@
-const React = require('react');
-const PureRenderMixin = require('react-addons-pure-render-mixin');
-const StylePropable = require('./mixins/style-propable');
-const PropTypes = require('./utils/prop-types');
-const Transitions = require('./styles/transitions');
-const DefaultRawTheme = require('./styles/raw-themes/light-raw-theme');
-const ThemeManager = require('./styles/theme-manager');
+import React from 'react';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
+import StylePropable from './mixins/style-propable';
+import PropTypes from './utils/prop-types';
+import Transitions from './styles/transitions';
+import DefaultRawTheme from './styles/raw-themes/light-raw-theme';
+import ThemeManager from './styles/theme-manager';
 
 const Paper = React.createClass({
 
@@ -19,13 +19,13 @@ const Paper = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       muiTheme: this.context.muiTheme ? this.context.muiTheme : ThemeManager.getMuiTheme(DefaultRawTheme),
     };
@@ -33,7 +33,7 @@ const Paper = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -98,4 +98,4 @@ const Paper = React.createClass({
 
 });
 
-module.exports = Paper;
+export default Paper;

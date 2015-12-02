@@ -1,10 +1,10 @@
-const React = require('react');
-const StylePropable = require('./mixins/style-propable');
-const Transitions = require('./styles/transitions');
-const Paper = require('./paper');
-const EnhancedSwitch = require('./enhanced-switch');
-const DefaultRawTheme = require('./styles/raw-themes/light-raw-theme');
-const ThemeManager = require('./styles/theme-manager');
+import React from 'react';
+import StylePropable from './mixins/style-propable';
+import Transitions from './styles/transitions';
+import Paper from './paper';
+import EnhancedSwitch from './enhanced-switch';
+import DefaultRawTheme from './styles/raw-themes/light-raw-theme';
+import ThemeManager from './styles/theme-manager';
 
 const Toggle = React.createClass({
 
@@ -33,7 +33,7 @@ const Toggle = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -52,7 +52,7 @@ const Toggle = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -73,11 +73,11 @@ const Toggle = React.createClass({
         width: toggleTrackWidth,
       },
       track: {
-          transition: Transitions.easeOut(),
-          width: '100%',
-          height: 14,
-          borderRadius: 30,
-          backgroundColor: this.getTheme().trackOffColor,
+        transition: Transitions.easeOut(),
+        width: '100%',
+        height: 14,
+        borderRadius: 30,
+        backgroundColor: this.getTheme().trackOffColor,
       },
       thumb: {
         transition: Transitions.easeOut(),
@@ -166,8 +166,8 @@ const Toggle = React.createClass({
     );
 
     let enhancedSwitchProps = {
-      ref: "enhancedSwitch",
-      inputType: "checkbox",
+      ref: 'enhancedSwitch',
+      inputType: 'checkbox',
       switchElement: toggleElement,
       rippleStyle: customRippleStyle,
       rippleColor: rippleColor,
@@ -179,7 +179,7 @@ const Toggle = React.createClass({
       onSwitch: this._handleToggle,
       onParentShouldUpdate: this._handleStateChange,
       defaultSwitched: this.props.defaultToggled,
-      labelPosition: (this.props.labelPosition) ? this.props.labelPosition : "left",
+      labelPosition: (this.props.labelPosition) ? this.props.labelPosition : 'left',
     };
 
     if (this.props.hasOwnProperty('toggled')) enhancedSwitchProps.checked = this.props.toggled;
@@ -209,4 +209,4 @@ const Toggle = React.createClass({
 
 });
 
-module.exports = Toggle;
+export default Toggle;

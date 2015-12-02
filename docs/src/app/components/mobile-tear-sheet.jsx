@@ -1,6 +1,6 @@
 import React from 'react';
 import {Mixins} from 'material-ui';
-const { StylePropable } = Mixins;
+const {StylePropable} = Mixins;
 
 
 const MobileTearSheet = React.createClass({
@@ -57,4 +57,4 @@ const MobileTearSheet = React.createClass({
 
 });
 
-module.exports = MobileTearSheet;
+export default MobileTearSheet;

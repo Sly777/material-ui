@@ -1,17 +1,15 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const ContextPure = require('../mixins/context-pure');
-const StylePropable = require('../mixins/style-propable');
-const WindowListenable = require('../mixins/window-listenable');
-const CssEvent = require('../utils/css-event');
-const KeyCode = require('../utils/key-code');
-const Calendar = require('./calendar');
-const Dialog = require('../dialog');
-const DatePickerInline = require('./date-picker-inline');
-const FlatButton = require('../flat-button');
-const DefaultRawTheme = require('../styles/raw-themes/light-raw-theme');
-const ThemeManager = require('../styles/theme-manager');
-const DateTime = require('../utils/date-time');
+import React from 'react';
+import ContextPure from '../mixins/context-pure';
+import StylePropable from '../mixins/style-propable';
+import WindowListenable from '../mixins/window-listenable';
+import KeyCode from '../utils/key-code';
+import Calendar from './calendar';
+import Dialog from '../dialog';
+import DatePickerInline from './date-picker-inline';
+import FlatButton from '../flat-button';
+import DefaultRawTheme from '../styles/raw-themes/light-raw-theme';
+import ThemeManager from '../styles/theme-manager';
+import DateTime from '../utils/date-time';
 
 const DatePickerDialog = React.createClass({
 
@@ -24,7 +22,7 @@ const DatePickerDialog = React.createClass({
   statics: {
     getRelevantContextKeys(muiTheme) {
       return {
-        buttonColor: muiTheme.datePicker.calendarTextColor,
+        calendarTextColor: muiTheme.datePicker.calendarTextColor,
       };
     },
     getChildrenClasses() {
@@ -63,7 +61,7 @@ const DatePickerDialog = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -94,7 +92,7 @@ const DatePickerDialog = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -236,4 +234,4 @@ const DatePickerDialog = React.createClass({
 
 });
 
-module.exports = DatePickerDialog;
+export default DatePickerDialog;

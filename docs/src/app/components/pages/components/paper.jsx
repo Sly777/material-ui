@@ -1,13 +1,13 @@
 import React from 'react';
-import { ClearFix, Mixins, Paper } from 'material-ui';
+import {ClearFix, Mixins, Paper} from 'material-ui';
 import ComponentDoc from '../../component-doc';
 
-const { StyleResizable } = Mixins;
+const {StyleResizable} = Mixins;
 import Code from 'paper-code';
 import CodeExample from '../../code-example/code-example';
 import CodeBlock from '../../code-example/code-block';
 
-const PaperPage = React.createClass ({
+const PaperPage = React.createClass({
 
   mixins: [StyleResizable],
 
@@ -119,10 +119,9 @@ import Paper from 'material-ui/lib/paper';
   },
 
   _createPaperElement(zDepth, text) {
-    let styles = this.getStyles();
     return (
       <Paper
-        style={styles.root}
+        style={this.getStyles().root}
         zDepth={zDepth}>
         {this._createParagraphElement(text)}
       </Paper>
@@ -132,7 +131,7 @@ import Paper from 'material-ui/lib/paper';
   _getGroupDefault() {
     let elements = [];
     for (let i = 1; i <= 5; i++) {
-      elements.push(this._createPaperElement(i, "zDepth="+i));
+      elements.push(this._createPaperElement(i, 'zDepth=' + i));
     }
     return elements;
   },
@@ -140,7 +139,7 @@ import Paper from 'material-ui/lib/paper';
   _getGroupRounded() {
     let elements = [];
     for (let i = 1; i <= 5; i++) {
-      elements.push(React.cloneElement(this._createPaperElement(i, "rounded=false"), {rounded: false}));
+      elements.push(React.cloneElement(this._createPaperElement(i, 'rounded=false'), {rounded: false}));
     }
     return elements;
   },
@@ -148,11 +147,11 @@ import Paper from 'material-ui/lib/paper';
   _getGroupCircle() {
     let elements = [];
     for (let i = 1; i <= 5; i++) {
-      elements.push(React.cloneElement(this._createPaperElement(i, "circle=true"), {circle: true}));
+      elements.push(React.cloneElement(this._createPaperElement(i, 'circle=true'), {circle: true}));
     }
     return elements;
   },
 
 });
 
-module.exports = PaperPage;
+export default PaperPage;

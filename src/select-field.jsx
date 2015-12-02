@@ -1,10 +1,10 @@
-const React = require('react');
-const StylePropable = require('./mixins/style-propable');
-const TextField = require('./text-field');
-const DropDownMenu = require('./drop-down-menu');
-const DefaultRawTheme = require('./styles/raw-themes/light-raw-theme');
-const ThemeManager = require('./styles/theme-manager');
-const ContextPure = require('./mixins/context-pure');
+import React from 'react';
+import StylePropable from './mixins/style-propable';
+import TextField from './text-field';
+import DropDownMenu from './drop-down-menu';
+import DefaultRawTheme from './styles/raw-themes/light-raw-theme';
+import ThemeManager from './styles/theme-manager';
+import ContextPure from './mixins/context-pure';
 
 const SelectField = React.createClass({
 
@@ -59,13 +59,13 @@ const SelectField = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       muiTheme: this.context.muiTheme ? this.context.muiTheme : ThemeManager.getMuiTheme(DefaultRawTheme),
     };
@@ -80,7 +80,7 @@ const SelectField = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -114,7 +114,7 @@ const SelectField = React.createClass({
       styles.label.top = -6;
       styles.icon.top = 11;
 
-      if(this.props.hintText) {
+      if (this.props.hintText) {
         styles.root.top = -5;
       } else {
         styles.root.top = -8;
@@ -178,4 +178,4 @@ const SelectField = React.createClass({
   },
 });
 
-module.exports = SelectField;
+export default SelectField;

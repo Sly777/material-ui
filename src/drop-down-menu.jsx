@@ -1,14 +1,14 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const StylePropable = require('./mixins/style-propable');
-const Transitions = require('./styles/transitions');
-const KeyCode = require('./utils/key-code');
-const DropDownArrow = require('./svg-icons/navigation/arrow-drop-down');
-const Paper = require('./paper');
-const Menu = require('./menu/menu');
-const ClearFix = require('./clearfix');
-const DefaultRawTheme = require('./styles/raw-themes/light-raw-theme');
-const ThemeManager = require('./styles/theme-manager');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import StylePropable from './mixins/style-propable';
+import Transitions from './styles/transitions';
+import KeyCode from './utils/key-code';
+import DropDownArrow from './svg-icons/navigation/arrow-drop-down';
+import Paper from './paper';
+import Menu from './menu/menu';
+import ClearFix from './clearfix';
+import DefaultRawTheme from './styles/raw-themes/light-raw-theme';
+import ThemeManager from './styles/theme-manager';
 
 
 const DropDownMenu = React.createClass({
@@ -24,7 +24,7 @@ const DropDownMenu = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -89,7 +89,7 @@ const DropDownMenu = React.createClass({
     }
   },
 
-  getStyles(){
+  getStyles() {
     const {disabled} = this.props;
     let zIndex = 5; // As AppBar
     let spacing = this.state.muiTheme.rawTheme.spacing;
@@ -194,7 +194,7 @@ const DropDownMenu = React.createClass({
 
     let styles = this.getStyles();
     let selectedIndex = this._isControlled() ? null : this.state.selectedIndex;
-    let displayValue = "";
+    let displayValue = '';
     if (selectedIndex) {
       if (process.env.NODE_ENV !== 'production') {
         console.assert(!!this.props.menuItems[selectedIndex], 'SelectedIndex of ' + selectedIndex + ' does not exist in menuItems.');
@@ -279,12 +279,12 @@ const DropDownMenu = React.createClass({
 
   _onControlClick() {
     if (!this.props.disabled) {
-      this.setState({ open: !this.state.open });
+      this.setState({open: !this.state.open});
     }
   },
 
   _onKeyDown(e) {
-    switch(e.which) {
+    switch (e.which) {
       case KeyCode.UP:
         if (!this.state.open) {
           this._selectPreviousItem();
@@ -362,4 +362,4 @@ const DropDownMenu = React.createClass({
 
 });
 
-module.exports = DropDownMenu;
+export default DropDownMenu;

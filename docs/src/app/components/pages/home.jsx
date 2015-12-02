@@ -1,12 +1,11 @@
 import React from 'react';
 import {History} from 'react-router';
-import { Mixins, RaisedButton, Styles } from 'material-ui';
+import {Mixins, RaisedButton, Styles} from 'material-ui';
 import HomeFeature from './home-feature';
 import FullWidthSection from '../full-width-section';
 
-const { StylePropable, StyleResizable } = Mixins;
-const { Colors, Spacing, Typography } = Styles;
-const ThemeManager = Styles.ThemeManager;
+const {StylePropable, StyleResizable} = Mixins;
+const {Colors, Spacing, Typography} = Styles;
 const DefaultRawTheme = Styles.LightRawTheme;
 
 
@@ -212,4 +211,4 @@ const HomePage = React.createClass({
   },
 });
 
-module.exports = HomePage;
+export default HomePage;

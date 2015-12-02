@@ -7,7 +7,6 @@ const {
   Avatar,
   Card,
   CardActions,
-  CardExpandable,
   CardHeader,
   CardMedia,
   CardText,
@@ -24,13 +23,13 @@ export default class CardPage extends React.Component {
     super(props);
 
     this.desc =
-      'A card is a piece of paper with unique related data that serves as an '+
-      'entry point to more detailed information. For example, a card could '+
-      'contain a photo, text, and a link about a single subject.'+
-      '\n\n'+
-      'Cards have a constant width and variable height. The maximum height is '+
-      'limited to the height of the available space on a platform, '+
-      'but it can temporarily expand (for example, to display a comment field). '+
+      'A card is a piece of paper with unique related data that serves as an ' +
+      'entry point to more detailed information. For example, a card could ' +
+      'contain a photo, text, and a link about a single subject.' +
+      '\n\n' +
+      'Cards have a constant width and variable height. The maximum height is ' +
+      'limited to the height of the available space on a platform, ' +
+      'but it can temporarily expand (for example, to display a comment field). ' +
       'Cards do not flip over to reveal information on the back.';
 
 
@@ -104,7 +103,6 @@ export default class CardPage extends React.Component {
           {
             '//Import statements:\nimport Card from \'material-ui/lib/card/card\';\n' +
             'import CardActions from \'material-ui/lib/card/card-actions\';\n' +
-            'import CardExpandable from \'material-ui/lib/card/card-expandable\';\n' +
             'import CardHeader from \'material-ui/lib/card/card-header\';\n' +
             'import CardMedia from \'material-ui/lib/card/card-media\';\n' +
             'import CardText from \'material-ui/lib/card/card-text\';\n' +
@@ -146,8 +144,7 @@ export default class CardPage extends React.Component {
               subtitle="Subtitle"
               avatar={<Avatar style={{color:'red'}}>A</Avatar>}
               actAsExpander={true}
-              showExpandableButton={true}>
-            </CardHeader>
+              showExpandableButton={true} />
             <CardText expandable={true}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.

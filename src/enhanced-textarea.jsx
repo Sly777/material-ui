@@ -1,8 +1,8 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const StylePropable = require('./mixins/style-propable');
-const DefaultRawTheme = require('./styles/raw-themes/light-raw-theme');
-const ThemeManager = require('./styles/theme-manager');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import StylePropable from './mixins/style-propable';
+import DefaultRawTheme from './styles/raw-themes/light-raw-theme';
+import ThemeManager from './styles/theme-manager';
 
 const rowsHeight = 24;
 
@@ -40,7 +40,7 @@ const EnhancedTextarea = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -137,7 +137,7 @@ const EnhancedTextarea = React.createClass({
 
     let newHeight = shadow.scrollHeight;
 
-    if (this.props.rowsMax > this.props.rows) {
+    if (this.props.rowsMax >= this.props.rows) {
       newHeight = Math.min(this.props.rowsMax * rowsHeight, newHeight);
     }
 
@@ -175,4 +175,4 @@ const EnhancedTextarea = React.createClass({
   },
 });
 
-module.exports = EnhancedTextarea;
+export default EnhancedTextarea;

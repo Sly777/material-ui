@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
-import { Paper, Mixins, Styles } from 'material-ui';
+import {Paper, Mixins, Styles} from 'material-ui';
 
-let { StylePropable, StyleResizable } = Mixins;
-let { Colors, Spacing, Transitions, Typography } = Styles;
+let {StylePropable, StyleResizable} = Mixins;
+let {Colors, Spacing, Transitions, Typography} = Styles;
 
 
 let HomeFeature = React.createClass({
@@ -122,4 +122,4 @@ let HomeFeature = React.createClass({
 
 });
 
-module.exports = HomeFeature;
+export default HomeFeature;

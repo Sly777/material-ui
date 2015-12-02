@@ -1,8 +1,8 @@
-const React = require('react');
-const TableRowColumn = require('./table-row-column');
-const StylePropable = require('../mixins/style-propable');
-const DefaultRawTheme = require('../styles/raw-themes/light-raw-theme');
-const ThemeManager = require('../styles/theme-manager');
+import React from 'react';
+import TableRowColumn from './table-row-column';
+import StylePropable from '../mixins/style-propable';
+import DefaultRawTheme from '../styles/raw-themes/light-raw-theme';
+import ThemeManager from '../styles/theme-manager';
 
 const TableFooter = React.createClass({
 
@@ -22,13 +22,13 @@ const TableFooter = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
   },
 
-  getInitialState () {
+  getInitialState() {
     return {
       muiTheme: this.context.muiTheme ? this.context.muiTheme : ThemeManager.getMuiTheme(DefaultRawTheme),
     };
@@ -36,7 +36,7 @@ const TableFooter = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
   },
@@ -53,7 +53,7 @@ const TableFooter = React.createClass({
   },
 
   getStyles() {
-   const styles = {
+    const styles = {
       cell: {
         borderTop: '1px solid ' + this.getTheme().borderColor,
         verticalAlign: 'bottom',
@@ -120,4 +120,4 @@ const TableFooter = React.createClass({
 
 });
 
-module.exports = TableFooter;
+export default TableFooter;

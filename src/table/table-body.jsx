@@ -1,10 +1,10 @@
-const React = require('react');
-const Checkbox = require('../checkbox');
-const TableRowColumn = require('./table-row-column');
-const ClickAwayable = require('../mixins/click-awayable');
-const StylePropable = require('../mixins/style-propable');
-const DefaultRawTheme = require('../styles/raw-themes/light-raw-theme');
-const ThemeManager = require('../styles/theme-manager');
+import React from 'react';
+import Checkbox from '../checkbox';
+import TableRowColumn from './table-row-column';
+import ClickAwayable from '../mixins/click-awayable';
+import StylePropable from '../mixins/style-propable';
+import DefaultRawTheme from '../styles/raw-themes/light-raw-theme';
+import ThemeManager from '../styles/theme-manager';
 
 
 const TableBody = React.createClass({
@@ -20,7 +20,7 @@ const TableBody = React.createClass({
     muiTheme: React.PropTypes.object,
   },
 
-  getChildContext () {
+  getChildContext() {
     return {
       muiTheme: this.state.muiTheme,
     };
@@ -65,7 +65,7 @@ const TableBody = React.createClass({
 
   //to update theme inside state whenever a new theme is passed down
   //from the parent / owner using context
-  componentWillReceiveProps (nextProps, nextContext) {
+  componentWillReceiveProps(nextProps, nextContext) {
     let newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
     this.setState({muiTheme: newMuiTheme});
 
@@ -84,7 +84,7 @@ const TableBody = React.createClass({
 
   componentClickAway() {
     if (this.props.deselectOnClickaway && this.state.selectedRows.length) {
-      this.setState({ selectedRows: [] });
+      this.setState({selectedRows: []});
       if (this.props.onRowSelection) this.props.onRowSelection([]);
     }
   },
@@ -166,7 +166,7 @@ const TableBody = React.createClass({
     );
   },
 
-  _calculatePreselectedRows (props) {
+  _calculatePreselectedRows(props) {
     // Determine what rows are 'pre-selected'.
     let preSelectedRows = [];
 
@@ -269,7 +269,7 @@ const TableBody = React.createClass({
       }
     }
 
-    this.setState({ selectedRows: selectedRows });
+    this.setState({selectedRows: selectedRows});
     if (this.props.onRowSelection) this.props.onRowSelection(this._flattenRanges(selectedRows));
   },
 
@@ -345,4 +345,4 @@ const TableBody = React.createClass({
 
 });
 
-module.exports = TableBody;
+export default TableBody;
